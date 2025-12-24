@@ -1,9 +1,17 @@
-import { Injectable } from '@angular/core';
+import { Injectable, inject } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthService {
 
-  constructor() { }
+  private router = inject(Router);
+
+  constructor() {}
+
+  logout(): void {
+    localStorage.removeItem('jwttoken');
+    this.router.navigate(['/login']);
+  }
 }
