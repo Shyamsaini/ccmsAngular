@@ -14,4 +14,11 @@ export class AuthService {
     localStorage.removeItem('jwttoken');
     this.router.navigate(['/login']);
   }
+  getUserRole(): string | null {
+  const token = localStorage.getItem('jwttoken');
+  if (!token) return null;
+
+  const payload = JSON.parse(atob(token.split('.')[1]));
+  return payload.role;
+}
 }
