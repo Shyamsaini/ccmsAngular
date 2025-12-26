@@ -25,9 +25,23 @@
               "src/assets"
             ],
             "styles": [
-              "src/styles.css"
+              "src/styles.css",
+
+              "src/assets/css/bootstrap-icons.min.css",
+              "src/assets/css/apexcharts.css",
+              "src/assets/css/jsvectormap.min.css",
+              "src/assets/css/overlayscrollbars.min.css",
+              "src/assets/css/index.css"
             ],
-            "scripts": []
+            "scripts": [
+              "src/assets/js/popper.min.js",
+              "src/assets/js/bootstrap.min.js",
+
+              "src/assets/js/apexcharts.min.js",
+              "src/assets/js/jsvectormap.min.js",
+              "src/assets/js/overlayscrollbars.browser.es6.min.js",
+              "src/assets/js/world.js"
+            ]
           },
           "configurations": {
             "development": {
@@ -110,9 +124,23 @@
               "src/assets"
             ],
             "styles": [
-              "src/styles.css"
+              "src/styles.css",
+
+              "src/assets/css/bootstrap-icons.min.css",
+              "src/assets/css/apexcharts.css",
+              "src/assets/css/jsvectormap.min.css",
+              "src/assets/css/overlayscrollbars.min.css",
+              "src/assets/css/index.css"
             ],
-            "scripts": []
+            "scripts": [
+              "src/assets/js/popper.min.js",
+              "src/assets/js/bootstrap.min.js",
+
+              "src/assets/js/apexcharts.min.js",
+              "src/assets/js/jsvectormap.min.js",
+              "src/assets/js/overlayscrollbars.browser.es6.min.js",
+              "src/assets/js/world.js"
+            ]
           }
         }
       }
