@@ -2,7 +2,8 @@
 .app-header {
   position: fixed;
   top: 0;
-  left: 250px;          /* sidebar width */
+  /* left: 250px; */
+  /* sidebar width */
   right: 0;
   height: 56px;
   z-index: 1038;
@@ -18,10 +19,66 @@
 .app-footer {
   margin-left: 250px;
 }
+
 @media (max-width: 991px) {
+
   .app-header,
   .app-main,
   .app-footer {
     margin-left: 0;
   }
+}
+
+/* ===== FULL WIDTH LAYOUT (NO SIDEBAR) ===== */
+
+.no-sidebar-layout,
+.no-sidebar-layout .app-header,
+.no-sidebar-layout .app-main,
+.no-sidebar-layout .app-footer {
+  width: 100%;
+  margin-left: 0 !important;
+}
+
+/* If AdminLTE main-header/main-footer are used inside */
+.no-sidebar-layout .main-header,
+.no-sidebar-layout .main-footer,
+.no-sidebar-layout .content-wrapper {
+  margin-left: 0 !important;
+  width: 100%;
+}
+
+/* Prevent horizontal scroll */
+html,
+body {
+  overflow-x: hidden;
+}
+
+
+
+
+/* Ensure navbar spans full width */
+.no-sidebar-layout .navbar {
+  width: 100%;
+}
+
+/* ===== FULL WIDTH HEADER (NO SIDEBAR) ===== */
+
+/* Remove AdminLTE sidebar offset */
+.no-sidebar-layout .app-header,
+.no-sidebar-layout .navbar {
+  margin-left: 0 !important;
+  width: 100%;
+}
+
+/* Fix inner container spacing */
+.no-sidebar-layout .app-header .container,
+.no-sidebar-layout .app-header .container-fluid {
+  max-width: 100% !important;
+  padding-left: 1rem;
+  padding-right: 1rem;
+}
+
+/* Prevent body padding issues */
+body:not(.sidebar-mini) .app-header {
+  margin-left: 0 !important;
 }
