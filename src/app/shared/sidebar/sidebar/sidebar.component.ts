@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { RouterLink, RouterLinkActive } from '@angular/router';
-
+declare var $: any;
 @Component({
   selector: 'app-sidebar',
   standalone: true,
@@ -18,4 +18,10 @@ import { RouterLink, RouterLinkActive } from '@angular/router';
 })
 export class SidebarComponent {
 
+
+ngAfterViewInit() {
+  setTimeout(() => {
+    $('[data-widget="treeview"]').Treeview('init');
+  });
+}
 }

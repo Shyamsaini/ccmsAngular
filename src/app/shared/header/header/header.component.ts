@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-
+declare var $: any;
 @Component({
   selector: 'app-header',
   standalone: true,
@@ -10,5 +10,13 @@ import { Component } from '@angular/core';
     </nav> `
 })
 export class HeaderComponent {
+
+
+
+ngAfterViewInit() {
+  setTimeout(() => {
+    $('[data-widget="pushmenu"]').PushMenu();
+  });
+}
 
 }
