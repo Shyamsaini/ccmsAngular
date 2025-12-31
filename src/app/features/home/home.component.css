@@ -1,0 +1,28 @@
+.about-ccms {
+  font-size: 14.5px;
+  line-height: 1.7;
+  color: #495057;
+  font-family: "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+}
+
+.about-ccms p {
+  margin-bottom: 12px;
+}
+
+.card-title {
+  color: #0d6efd;
+}
+ .blinkTech{
+    width:200px;
+    height: 50px;     
+    text-align: center; 
+    font-size: 15px;
+    font-family: cursive;
+    color: red;
+    animation: blink 1s linear infinite;
+  }
+  @keyframes blink{
+0%{opacity: 0;}
+50%{opacity: .5;}
+100%{opacity: 1;}
+}

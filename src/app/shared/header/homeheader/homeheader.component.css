@@ -1,0 +1,120 @@
+
+/* Mobile adjustment */
+@media (max-width: 768px) {
+  .header-logo {
+    height: 38px;
+  }
+}
+
+
+.header-title {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  font-weight: 700;
+  font-size: 1.5rem;
+  white-space: nowrap;
+}
+
+
+.app-header {
+  height: 100px;              
+}
+
+.app-header .container-fluid {
+  height: 100%;
+  align-items: center;      
+  display: flex;
+}
+
+.header-logo {
+  height: 85px;             
+}
+
+.header-title {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 1.2rem;
+  font-weight: 700;
+  line-height: 1;
+}
+
+.state-select {
+  height: 42px;
+  min-width: 220px;
+  border-radius: 8px;
+  font-size: 14px;
+  padding: 6px 12px;
+}
+
+.btn-login {
+  height: 42px;
+  padding: 0 18px;
+  background-color: #0b2c5d;
+  color: #fff;
+  border-radius: 8px;
+  font-size: 14px;
+  border: none;
+  width: 100%;
+}
+
+.btn-login:hover {
+  background-color: #061c3a;
+}
+
+
+
+.backdrop {
+   z-index: 1000 !important;
+  background-color: transparent !important; /* or any color */
+}
+.login-header {
+  border-bottom: 1px solid #dee2e6;
+  height: 48px;
+}
+
+.login-tab {
+  flex: 1;
+  text-align: center;
+  font-weight: 600;
+  font-size: 14px;
+  padding: 12px 0;
+  cursor: pointer;
+  border-right: 1px solid #dee2e6;
+  background: #f8f9fa;
+}
+
+.login-tab:last-child {
+  border-right: none;
+}
+
+.login-tab.active {
+  background: #ffffff;
+  color: #0d6efd;
+  border-bottom: 2px solid #0d6efd;
+}
+/* OTP container */
+.otp-container {
+  display: flex;
+  justify-content: center;
+  gap: 12px;              /* ✅ THIS FIXES SPACING */
+  margin: 20px 0;
+}
+
+/* OTP input boxes */
+.otp-input {
+  width: 45px;
+  height: 45px;
+  text-align: center;
+  font-size: 18px;
+  border-radius: 6px;
+  border: 1px solid #ced4da;
+  outline: none;
+}
+
+/* Focus effect */
+.otp-input:focus {
+  border-color: #0d6efd;
+  box-shadow: 0 0 0 0.15rem rgba(13, 110, 253, 0.25);
+}

@@ -1,0 +1,19 @@
+.nic-footer {
+  background-color: #0b4d8f; 
+  color: #ffffff;
+  padding: 10px 12px;
+  font-size: 13px;
+  line-height: 1.6;
+   padding: 0;
+  border-top: 2px solid #f2f2f2;
+}
+
+.nic-footer .highlight {
+  color: #ffd700; 
+  font-weight: 600;
+}
+
+.nic-footer .footer-text {
+  display: block;
+  text-align: center;
+}

@@ -1,4 +1,4 @@
 export const environment = {
   production: false,
-  apiUrl: 'https://qa-api.example.com'
+  apiUrl: 'http://10.144.2.34:256/api'
 };
