@@ -11,76 +11,65 @@
 </div>
 <div class="app-content">
     <div class="container-fluid">
-
         <div class="row g-3 mb-4">
-            <!-- Card 1 -->
+
             <div class="col-12 col-sm-6 col-md-4 col-xl">
                 <div class="small-box text-bg-primary h-100">
                     <div class="inner">
-                        <h3>150</h3>
-                        <p>New Orders</p>
+                        <h3>{{ summary?.civilCase}}</h3>
+                        <p>Civil Cases</p>
                     </div>
-                    <i class="small-box-icon bi bi-cart"></i>
-
+                    <i class="small-box-icon bi bi-hourglass-split"></i>
                 </div>
             </div>
 
-            <!-- Card 2 -->
             <div class="col-12 col-sm-6 col-md-4 col-xl">
                 <div class="small-box text-bg-success h-100">
                     <div class="inner">
-                        <h3>53<sup class="fs-6">%</sup></h3>
-                        <p>Bounce Rate</p>
+                        <h3>{{ summary?.criminalCase }}</h3>
+                        <p>Criminal Cases</p>
                     </div>
-                    <i class="small-box-icon bi bi-bar-chart"></i>
-
+                    <i class="small-box-icon bi bi-check-circle"></i>
                 </div>
             </div>
 
-            <!-- Card 3 -->
             <div class="col-12 col-sm-6 col-md-4 col-xl">
                 <div class="small-box text-bg-warning h-100">
                     <div class="inner">
-                        <h3>44</h3>
-                        <p>User Registrations</p>
+                        <h3>{{ summary?.advocate }}</h3>
+                        <p>Advocates</p>
                     </div>
-                    <i class="small-box-icon bi bi-person-plus"></i>
-
+                    <i class="small-box-icon bi bi-person-badge"></i>
                 </div>
             </div>
 
-            <!-- Card 4 -->
             <div class="col-12 col-sm-6 col-md-4 col-xl">
                 <div class="small-box text-bg-danger h-100">
                     <div class="inner">
-                        <h3>65</h3>
-                        <p>Unique Visitors</p>
+                        <h3>{{ summary?.contemptCase }}</h3>
+                        <p>Contempt Cases</p>
                     </div>
-                    <i class="small-box-icon bi bi-pie-chart"></i>
-
+                    <i class="small-box-icon bi bi-exclamation-triangle"></i>
                 </div>
             </div>
 
-            <!-- Card 5 -->
             <div class="col-12 col-sm-6 col-md-4 col-xl">
                 <div class="small-box text-bg-info h-100">
                     <div class="inner">
-                        <h3>65</h3>
-                        <p>Total Cases</p>
+                        <h3>
+                            {{ summary?.decidedCase }}
+                        </h3>
+                        <p>Decided Cases</p>
                     </div>
                     <i class="small-box-icon bi bi-graph-up"></i>
-
                 </div>
             </div>
+
         </div>
+        <div class="row align-items-stretch mb-4">
 
-        <div class="row">
-
-            <!-- LEFT SIDE : CHARTS -->
-            <div class="col-lg-7">
-                <div class="card mb-4">
-
-                    <!-- Header -->
+            <div class="col-lg-7 d-flex">
+                <div class="card mb-4 w-100 h-100">
                     <div class="card-header text-center">
                         <div class="row">
                             <div class="col-md-6 border-end">
@@ -91,10 +80,8 @@
                             </div>
                         </div>
                     </div>
-
-                    <!-- Body -->
-                    <div class="card-body">
-                        <div class="row align-items-center">
+                    <div class="card-body d-flex align-items-center">
+                        <div class="row w-100">
                             <div class="col-md-6 text-center">
                                 <canvas id="Todaychart" class="chart-canvas"></canvas>
                             </div>
@@ -106,76 +93,65 @@
 
                 </div>
             </div>
-
-            <!-- RIGHT SIDE -->
-            <div class="col-lg-5">
-                <div class="card mb-4">
-                    <div class="card-header ">
+            <div class="col-lg-5 d-flex">
+                <div class="card mb-4 w-100 h-100">
+                    <div class="card-header">
                         <div class="row">
                             <div class="col-md-3 border-end">
-                                <h6 class="mb-0 fw-semibold">Search Case</h6>
+                                <h6 class="mb-0 fw-semibold">About CCMS</h6>
                             </div>
-                            <div class="col-md-9 text-right">
-                                <h6 class="mb-0 fw-semibold"><label class="label " for="Respondent">Please contact for
-                                        technical support - <span class="blinkTech"
-                                            style="color:red">011-24305000</span>, ext. - 49133</label></h6>
+                            <div class="col-md-9 text-end">
+                                <h6 class="mb-0 fw-semibold">
+                                    Please contact for technical support –
+                                    <span class="blinkTech text-danger">011-24305000</span>, ext. - 49133
+                                </h6>
                             </div>
                         </div>
                     </div>
+                    <div class="card-body d-flex flex-column justify-content-between">
+                        <div>
+                            <p>
+                                <strong>Court Case Monitoring System (CCMS)</strong> aims to facilitate
+                                departments, advocates, HODs, LR and Secretaries to manage and monitor
+                                court cases pertaining to the Departments of Chandigarh Administration.
+                            </p>
 
+                            <p>
+                                CCMS is integrated with the National Judicial Data Grid using the NAPIX
+                                platform for District and High Court cases. CAT cases are also integrated,
+                                while Supreme Court integration is under process.
+                            </p>
 
-                    <div class="card-body">
+                            <p>
+                                CCMS operates on a role-based system ensuring users view and perform
+                                actions relevant to them. Case details are automatically fetched and
+                                notified by the Law Department.
+                            </p>
 
-                        <div class="input-group mb-2">
-                            <input type="text" class="form-control" placeholder="Type case number..." />
-                            <button class="btn btn-primary">Search</button>
+                            <p class="mb-2">
+                                Android and iOS mobile applications are also available.
+                            </p>
                         </div>
-
-                        <!-- Logos -->
-                        <div class="row g-2 mb-3">
+                        <div class="card mt-3">
+                            <div class="card-header bg-light">
+                                <h6 class="mb-0 fw-semibold">Search Case</h6>
+                            </div>
+                            <div class="card-body d-flex gap-2">
+                                <input type="text" class="form-control" placeholder="Type case number..." />
+                                <button class="btn btn-primary">Search</button>
+                            </div>
+                        </div>
+                        <div class="row mt-3">
                             <div class="col-5">
                                 <a href="https://egazette.chd.gov.in/" target="_blank">
-                                    <img src="assets/images/egazette.png" class="img-fluid rounded logo-img"
-                                        width="100%" alt="eGazette Chandigarh" />
+                                    <img src="assets/images/egazette.png" class="img-fluid rounded" width="100%"
+                                        alt="eGazette Chandigarh">
                                 </a>
                             </div>
                             <div class="col-7">
                                 <a href="https://www.indiacode.nic.in/" target="_blank">
-                                    <img src="assets/images/indiacode.png" class="img-fluid rounded logo-img"
-                                        width="100%" alt="India Code" />
+                                    <img src="assets/images/indiacode.png" class="img-fluid rounded" width="100%" alt="India Code">
                                 </a>
-                            </div>
-                        </div>
-
-                        <!-- ABOUT CCMS -->
-                        <div class="card mt-3">
-                            <div class="card-header bg-light">
-                                <h6 class="mb-0 fw-semibold">About CCMS</h6>
-                            </div>
-                            <div class="card-body about-ccms px-3 mb-2">
-
-                                <p>
-                                    <strong>Court Case Monitoring System (CCMS)</strong> aims to facilitate
-                                    departments, advocates, HODs, LR and Secretaries to manage and monitor
-                                    court cases pertaining to the Departments of Chandigarh Administration.
-                                </p>
-
-                                <p>
-                                    CCMS is integrated with the National Judicial Data Grid using the NAPIX
-                                    platform for District and High Court cases. CAT cases are also integrated,
-                                    while Supreme Court integration is under process.
-                                </p>
-
-                                <p>
-                                    CCMS operates on a role-based system ensuring users view and perform
-                                    actions relevant to them. Case details are automatically fetched and
-                                    notified by the Law Department.
-                                </p>
-
-                                <p class="mb-0">
-                                    Android and iOS mobile applications are also available.
-                                </p>
-
                             </div>
                         </div>
 
@@ -185,14 +161,13 @@
 
         </div>
 
-
         <div class="row">
             <div class="col-lg-12 connectedSortable">
                 <div class="card direct-chat direct-chat-primary mb-4">
                     <div class="card-header">
-                        <h3>Court Wise Cases(Ongoing Cases)</h3>
+                        <h6 class="mb-0 fw-semibold">Court Wise Cases(Ongoing Cases)</h6>
                     </div>
-                    <div class="card-body">
+                    <div class="card-body chart-container">
                         <canvas id="barChart" class="custom-chart"></canvas>
                     </div>
 
@@ -203,9 +178,9 @@
             <div class="col-lg-12 connectedSortable">
                 <div class="card direct-chat direct-chat-primary mb-4">
                     <div class="card-header">
-                        <h3>Day wise cases entry (Last 30 days)</h3>
+                        <h6 class="mb-0 fw-semibold">Day wise cases entry (Last 30 days)</h6>
                     </div>
-                    <div class="card-body">
+                    <div class="card-body chart-container">
                         <canvas id="lineChart" class="custom-chart"></canvas>
                     </div>
 

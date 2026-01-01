@@ -3,19 +3,20 @@
         <a href="#" class="navbar-brand d-flex align-items-center">
             <img src="assets/images/site_loginlogo.png" alt="CCMS Logo" class="header-logo" />
         </a>
-        <span class="header-title d-none d-md-inline"> </span>
+        <span class="header-title d-none d-md-inline"></span>
         <div class="header-title d-none d-md-inline">
             <h2> Court Cases Monitoring System </h2>
         </div>
         <ul class="navbar-nav ms-auto">
             <li class="nav-item">
                 <div class="d-flex align-items-center gap-2">
-                    <select class="form-select state-select">
-                        <option selected>Select State</option>
-                        <option>Chandigarh</option>
-                        <option>Punjab</option>
-                        <option>Haryana</option>
+                    <select class="form-select state-select" [(ngModel)]="selectedStateCode" name="state">
+                        <option value="0" disabled>Select State</option>
+                        <option *ngFor="let state of states" [value]="state.value">
+                            {{ state.text }}
+                        </option>
                     </select>
+
                     <button class="btn btn-login" (click)="openLogin(content)">
                         <i class="fa fa-sign-in mr-2" aria-hidden="true"></i>Login
                     </button>
@@ -28,13 +29,27 @@
     <div class="modal-header p-0">
         <div class="login-header d-flex align-items-center w-100">
 
-            <div class="login-tab" [class.active]="loginType === 'user'" (click)="loginType = 'user'">
-                Login with User ID
+            <!-- Login with label -->
+            <div class="me-3">
+                <h6 class="mb-0 fw-semibold">Login with</h6>
             </div>
-            <div class="login-tab" [class.active]="loginType === 'mobile'"
-                (click)="loginType = 'mobile'; isOtpTextVisible = false;">Login with mobile no</div>
-            <button type="button" class="btn-close ms-auto me-2" (click)="modal.dismiss()">
-            </button>
+
+            <!-- Radio buttons styled as inline tabs -->
+            <div class="d-flex align-items-center">
+                <div class="form-check me-3">
+                    <input class="form-check-input" type="radio" name="loginType" id="loginUser" [value]="'user'"
+                        [(ngModel)]="loginType" (change)="isOtpTextVisible = false">
+                    <label class="form-check-label" for="loginUser">User ID</label>
+                </div>
+
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="loginType" id="loginMobile" [value]="'mobile'"
+                        [(ngModel)]="loginType" (change)="isOtpTextVisible = false">
+                    <label class="form-check-label" for="loginMobile">Mobile Number</label>
+                </div>
+            </div>
+            <button type="button" class="btn-close ms-auto me-2" (click)="modal.dismiss()"></button>
+
         </div>
     </div>
     <div class="modal-body">
@@ -76,15 +91,18 @@
                 </div>
                 <div class="d-flex justify-content-center">
                     <button class="btn btn-primary text-white mx-1" *ngIf="isOtpReSendButton">Resend OTP</button>
-                    <button class="btn btn-success text-white mx-1" (click)="verfiyOTPUser()" *ngIf="isOtpVerfiy">Verify OTP</button>
+                    <button class="btn btn-success text-white mx-1" (click)="verfiyOTPUser()" *ngIf="isOtpVerfiy">Verify
+                        OTP</button>
 
                 </div>
             </div>
         </div>
 
         <div *ngIf="loginType === 'user'">
-            <input type="text" class="form-control mb-3" placeholder="Enter User ID" />
-            <input type="password" class="form-control mb-3" placeholder="Enter Password" />
+            <input type="text" class="form-control mb-3" [(ngModel)]="uid" name="uid" placeholder="Enter User ID"
+                required />
+            <input type="password" class="form-control mb-3" [(ngModel)]="password" name="password" required
+                placeholder="Enter Password" />
             <div class="d-flex gap-2 mb-3">
                 <input type="text" class="form-control" placeholder="Enter Captcha" [(ngModel)]="captch_input"
                     maxlength="10">
@@ -95,7 +113,7 @@
                 </button>
             </div>
 
-            <button class="btn btn-primary w-100">
+            <button class="btn btn-primary w-100" (click)="verifypassword()">
                 Login
             </button>
         </div>

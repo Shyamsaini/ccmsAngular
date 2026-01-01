@@ -15,12 +15,22 @@
   font-size: 1.5rem;
   white-space: nowrap;
 }
-
-
 .app-header {
-  height: 100px;              
+    background-image: url('/assets/images/topheader.png'); /* adjust path if needed */
+    background-repeat: no-repeat;
+    background-size: cover;        /* covers full navbar */
+    background-position: center;
+    min-height: 100px;              /* adjust height as needed */
 }
 
+
+/* .app-header {
+  height: 100px;              
+} */
+.app-header h2 {
+    color:#0b4d8f;
+    font-weight: 600;
+}
 .app-header .container-fluid {
   height: 100%;
   align-items: center;      

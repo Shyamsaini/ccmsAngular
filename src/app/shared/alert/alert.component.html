@@ -1,0 +1,17 @@
+<!-- Error alert -->
+<div *ngIf="message && type === 'error'" class="alert-bx bg-white">
+  <span><i class="fa fa-exclamation-triangle" aria-hidden="true"></i></span>
+  <p>{{ message }}</p>
+</div>
+
+<!-- Success alert -->
+<div *ngIf="message && type === 'success'" class="alert-bx bg-white alert-bx-success">
+  <span><i class="fa fa-check" aria-hidden="true"></i></span>
+  <p>{{ message }}</p>
+</div>
+
+<!-- Warning alert -->
+<div *ngIf="message && type === 'warning'" class="alert-bx bg-white alert-bx-warning">
+  <span><i class="fa fa-exclamation" aria-hidden="true"></i></span>
+  <p>{{ message }}</p>
+</div>

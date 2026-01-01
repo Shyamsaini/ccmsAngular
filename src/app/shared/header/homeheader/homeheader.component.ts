@@ -7,6 +7,10 @@ import { NgbModal, } from '@ng-bootstrap/ng-bootstrap';
 import { FormsModule } from '@angular/forms';
 import { LoaderServiceService } from '../../../core/services/loader-service.service';
 import { HomeService } from '../../../core/services/home.service';
+import { CommonService } from '../../../core/services/common.service';
+import { firstValueFrom } from 'rxjs';
+import { Router } from '@angular/router';
+import { AlertService } from '../../../core/services/alert.service';
 @Component({
   selector: 'app-homeheader',
   standalone: true,
@@ -19,7 +23,7 @@ import { HomeService } from '../../../core/services/home.service';
   styleUrl: './homeheader.component.css'
 })
 export class HomeheaderComponent {
-  selectedStateCode: string = '0';
+    selectedStateCode: number = 0;
   mobileNumber: string = '';
   captch_input: string = '';
   otp1 = ''; otp2 = ''; otp3 = ''; otp4 = ''; otp5 = ''; otp6 = '';
@@ -32,37 +36,44 @@ export class HomeheaderComponent {
   mobileError: string = '';
   modalRef: any;
   captchaId: any;
+  states: any;
+  selectedState: string | null = null;
+  uid: string = '';
+  password: string = '';
+  stateCode: string = '';
+  captchaValue: string = '';
 
-  constructor(private modalService: NgbModal,private loaderService:LoaderServiceService,private apiservice:HomeService) { }
+  constructor(private modalService: NgbModal, private loaderService: LoaderServiceService, private apiservice: HomeService, private commonService: CommonService, private router: Router,private alertService: AlertService) { }
 
-  ngOnInit(): void {
-    // Load states
-    // this.authService.getStates().subscribe((data: any[]) => {
-    //   this.states = data;
-    //});
-
-
-    this.createCaptcha();
- 
+  async ngOnInit() {
+    this.states = await this.commonService.loadState().toPromise();
+    await this.createCaptcha();
   }
-   loginType: 'user' | 'mobile' = 'mobile';
+  loginType: 'mobile' | 'user' = 'user';
+
   openLogin(content: any) {
-    //this.ResetLoginModel();
-    this.modalRef = this.modalService.open(content, { centered: true,backdrop: false, backdropClass: 'backdrop', });
+    debugger;
+     if (!this.selectedStateCode || this.selectedStateCode.toString().trim() === '') {
+      this.alertService.showWarning('Please select a state.');
+      return;
+    }
+
+    this.modalRef = this.modalService.open(content, { centered: true, backdrop: false, backdropClass: 'backdrop', });
   }
 
-  createCaptcha(): void {
-     this.loaderService.show();
-    this.apiservice.generateCaptcha().subscribe(response => {
-      this.loaderService.hide();
+  async createCaptcha(): Promise<void> {
+    this.loaderService.show();
+    try {
+      const response = await firstValueFrom(this.apiservice.generateCaptcha());
       if (response.isSuccess) {
         this.captchaUrl = `data:image/png;base64, ${response.data.captcha}`;
         this.captchaId = response.data.captchaId;
       }
-      else {
-        //this.alertService.showWarning(response.message);
-      }
-    });
+    } catch (error) {
+      console.error('Error generating captcha:', error);
+    } finally {
+      this.loaderService.hide();
+    }
   }
 
 
@@ -84,7 +95,7 @@ export class HomeheaderComponent {
   }
 
   verfiyOTPUser() {
-    console.log('Verify OTP:', this.otp1+this.otp2+this.otp3+this.otp4+this.otp5+this.otp6);
+    console.log('Verify OTP:', this.otp1 + this.otp2 + this.otp3 + this.otp4 + this.otp5 + this.otp6);
   }
 
   moveFocus(event: KeyboardEvent, nextInput: any, prevInput: any) {
@@ -95,4 +106,41 @@ export class HomeheaderComponent {
       nextInput.focus();
     }
   }
+
+  async verifypassword(): Promise<void> {
+    debugger;
+    const payload = {
+      uid: this.uid,
+      password: this.password,
+      stateCode: this.selectedStateCode,
+      captchaId: this.captchaId,
+      captchaValue: this.captch_input,
+    };
+
+    this.loaderService.show();
+    try {
+      const response = await this.apiservice.login(payload);
+      if (response.isSuccess) {
+        const userData = response.data;
+        localStorage.setItem('token', userData.jwtToken);
+        localStorage.setItem('user', JSON.stringify(userData));
+        localStorage.setItem('uid', userData.uid.trim());
+        localStorage.setItem('roleId', userData.roleid);
+        localStorage.setItem('panel', userData.panel);
+        if (this.modalRef) {
+          this.modalRef.close();
+        }
+
+        // navigate to dashboard
+        this.router.navigate(['/dashboard']);
+      } else {
+        console.warn('Login failed:', response.message);
+      }
+    } catch (error) {
+      console.error('Error during login:', error);
+    } finally {
+      this.loaderService.hide();
+    }
+  }
+
 }
